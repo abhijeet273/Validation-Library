@@ -1,6 +1,6 @@
 # Validation-Library
 
-#Overview
+# Overview
 This Library helps you validate your HTML inputs by using only one method and passing several validation parameters to it.
 
 Include the validation.js file at the bottom of your closing body tag ( i.e. just above your main HTML closing tag) using <script src="validation.js"></script>
