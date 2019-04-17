@@ -1,12 +1,7 @@
 // selecting all the input elements
 var inputs = document.getElementsByTagName('input');
 
-// selecting emailField
-for(var i = 0; i < inputs.length; i++) {
-    if(inputs[i].type.toLowerCase() == 'email') {
-        emailField = inputs[i];
-    }
-}
+
 
 // defining a function validate for each input Object
 for(i=0; i<inputs.length; i++){
@@ -101,5 +96,3 @@ for(i=0; i<inputs.length; i++){
 	}
 }
 
-console.log(err);
-let result = document.getElementById('first').validate([{type:"email"}]);
