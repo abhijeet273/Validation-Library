@@ -85,7 +85,11 @@ for(i = 0; i < inputs.length; i++) {
 				}
 			}
 
-
+		    else if(params[i].type === 'email') {
+				if(!this.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+					err.push('Please enter correct email (e.g. something@example.com)');
+				}
+			}
 		}
 
 		if(err.length === 0) {
