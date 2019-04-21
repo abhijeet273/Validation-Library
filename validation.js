@@ -5,13 +5,13 @@
   var inputs = document.getElementsByTagName('input');
 
 // defining a function validate for each input Object
-  for(var i=0; i < inputs.length; i++) {
+  for(var i=0; i<inputs.length; i++) {
     var err = [];
-	inputs[i].validate = function(params) {
-	  for(i=0; i < params.length; i++) {
+	inputs[i].validate = function(params){
+	  for(i=0; i<params.length; i++){
 
-	    if(params[i].type === 'required') {
-		  if (this.value.trim()==='') {
+	    if(params[i].type === 'required'){
+		  if (this.value.trim()===''){
 		    err.push('cannot be empty');
 		  }
 		}
@@ -23,15 +23,15 @@
 		}
 
 		else if(params[i].type === 'length') {
-		  if(this.value.length < params[i].min) {
+		  if(!isNaN(params[i].min) && this.value.length < params[i].min) {
 			err.push('Minimum '+params[i].min+' characters required');
 		  }
 
-		  if(this.value.length > params[i].max) {
+		  if(!isNaN(params[i].max) && this.value.length > params[i].max) {
 			err.push('Maximum characters limit of '+params[i].max+' exceeded');
 		  }
 
-		  if(this.value.length !== params[i].just) {
+		  if(!isNaN(params[i].just) && this.value.length !== params[i].just) {
 			err.push('It should be '+params[i].just+' characters long');
 		  }
 		}
@@ -62,7 +62,7 @@
 			err.push('Please select a date after ' + mindate.toLocaleDateString());
 		  }
 
-		  if(date.valueOf() > params[i].before) {
+		  if(date.valueOf()>params[i].before) {
 			var maxdate = new Date(params[i].before);
 			err.push('please select a date before '+ maxdate.toLocaleDateString());
 		  }
@@ -88,6 +88,7 @@
 		  }
 		}
 
+
 	  }
 
 	  if(err.length === 0) {
@@ -100,3 +101,8 @@
 	}
   }
 })();
+//console.log(err);
+//let result1 = document.getElementById('third').validate([{type:"email"}, {type:"required"}]);
+//let result2 = document.getElementById('first').validate([{type:"length", min: 8}, {type:"required"}]);
+//console.log(result1);
+//console.log(result2);
