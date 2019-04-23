@@ -1,7 +1,7 @@
 (function () {
 'use strict';
 
-// selecting all the input elements//
+// selecting all the input elements///
 	var inputs = document.getElementsByTagName('input');
 	var textareas = document.getElementsByTagName('textarea');
 	var selects = document.getElementsByTagName('select');
