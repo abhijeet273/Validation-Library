@@ -2,13 +2,14 @@
 'use strict';
 
 // selecting all the input elements
-  var inputs = document.getElementsByTagName('input');
-  var textareas = document.getElementsByTagName('textarea');
-  var selects = document.getElementsByTagName('select');
+  let inputs = document.getElementsByTagName('input');
+  let textareas = document.getElementsByTagName('textarea');
+  let selects = document.getElementsByTagName('select');
 
 // defining a function validation 
   function  validation(params){
-    for(i=0; i<params.length; i++){
+    var err = [];
+    for(let i=0; i<params.length; i++){
 
       if(params[i].type === 'required'){
         if (this.value.trim()===''){
@@ -43,7 +44,7 @@
       }
 
       else if(params[i].type === 'member') {
-        var count = 0;
+        let count = 0;
         for(j=0; j < params[i].of.length; j++) {
           if(this.value === params[i].of[j]){
             count = count +1;
@@ -56,14 +57,14 @@
       }
 
       else if(params[i].type === 'date') {
-        var date = new Date(this.value);
+        let date = new Date(this.value);
         if(date.valueOf() < params[i].after) {
-          var mindate = new Date(params[i].after);
+          let mindate = new Date(params[i].after);
           err.push('Please select a date after ' + mindate.toLocaleDateString());
         }
 
         if(date.valueOf()>params[i].before) {
-          var maxdate = new Date(params[i].before);
+          let maxdate = new Date(params[i].before);
           err.push('please select a date before '+ maxdate.toLocaleDateString());
         }
       }
@@ -102,26 +103,15 @@
     }
 
 
-// defining function validate for each input Object
-  for(var i=0; i<inputs.length; i++) {
-    var err = [];
-    inputs[i].validate = validation
-  }
+// defining function validate for each input,textarea and select Object
+  HTMLInputElement.prototype.validate = validation;
+  HTMLTextAreaElement.prototype.validate = validation;
+  HTMLSelectElement.prototype.validate = validation;
 
-//  setting the validate function to the prototype of textarea and select 
-  for(var i=0; i<textareas.length; i++) {
-    var err = [];
-    textareas[i].validate = validation
-  }
-
-  for(var i=0; i<selects.length; i++) {
-    var err = [];
-    selects[i].validate = validation
-  }
 
 })();
 //console.log(err);
-//let result1 = document.getElementById('third').validate([{type:"email"}, {type:"required"}]);
+// let result1 = document.getElementById('first').validate([{type:"email"}, {type:"required"}]);
 // let result2 = document.getElementById('second').validate([{type:"length", max: 1, min: 8}, {type:"required"}]);
 //console.log(result1);
 //console.log(result2);
