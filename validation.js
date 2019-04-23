@@ -38,7 +38,7 @@
 
       else if(params[i].type === 'different') {
         if(this.value === params[i].from) {
-        err.push('It should be different from your Email');
+          err.push('It should be different from your Email');
         }
       }
 
@@ -98,7 +98,8 @@
       else {
         return err;
       }
-      }
+
+    }
 
 
 // defining function validate for each input Object
