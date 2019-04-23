@@ -1,18 +1,18 @@
 (function () {
 'use strict';
 
-// selecting all the input elements?
-  var inputs = document.getElementsByTagName('input');
-  var textareas = document.getElementsByTagName('textarea');
-  var selects = document.getElementsByTagName('select');
+// selecting all the input elements
+	var inputs = document.getElementsByTagName('input');
+	var textareas = document.getElementsByTagName('textarea');
+	var selects = document.getElementsByTagName('select');
 
 // defining a function validation 
-  function  validation(params){
+	function  validation(params){
 		for(i=0; i<params.length; i++){
 
 			if(params[i].type === 'required'){
 			  if (this.value.trim()===''){
-			    err.push('cannot be empty');
+				  err.push('cannot be empty');
 			  }
 			}
 
@@ -46,7 +46,7 @@
 			  var count = 0;
 			  for(j=0; j < params[i].of.length; j++) {
 					if(this.value === params[i].of[j]){
-				  count = count +1;
+				  	count = count +1;
 				}
 			  }
 
@@ -92,11 +92,11 @@
 			}
 
 			if(err.length === 0) {
-			return true;
+				return true;
 			}
 
 			else {
-			return err;
+				return err;
 			}
 		  }
 
