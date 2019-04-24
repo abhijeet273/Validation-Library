@@ -1,6 +1,7 @@
 (function () {
 'use strict';
 
+  let err = [];
 // selecting all the input elements
   let inputs = document.getElementsByTagName('input');
   let textareas = document.getElementsByTagName('textarea');
@@ -8,7 +9,7 @@
 
 // defining a function validation 
   function  validation(params){
-    var err = [];
+    //let err = [];
     for(let i=0; i<params.length; i++){
 
       if(params[i].type === 'required'){
@@ -63,7 +64,7 @@
           err.push('Please select a date after ' + mindate.toLocaleDateString());
         }
 
-        if(date.valueOf()>params[i].before) {
+        if(date.valueOf() > params[i].before) {
           let maxdate = new Date(params[i].before);
           err.push('please select a date before '+ maxdate.toLocaleDateString());
         }
