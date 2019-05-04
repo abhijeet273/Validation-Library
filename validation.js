@@ -1,15 +1,15 @@
 (function () {
 'use strict';
 
-  let err = [];
 // selecting all the input elements
   let inputs = document.getElementsByTagName('input');
   let textareas = document.getElementsByTagName('textarea');
   let selects = document.getElementsByTagName('select');
 
 // defining a function validation 
-  function  validation(params){
-    //let err = [];
+  // let  validation = (params) => {
+  function validation(params) {
+    let err = [];
     for(let i=0; i<params.length; i++){
 
       if(params[i].type === 'required'){
@@ -64,7 +64,7 @@
           err.push('Please select a date after ' + mindate.toLocaleDateString());
         }
 
-        if(date.valueOf() > params[i].before) {
+        if(date.valueOf()>params[i].before) {
           let maxdate = new Date(params[i].before);
           err.push('please select a date before '+ maxdate.toLocaleDateString());
         }
@@ -104,11 +104,20 @@
     }
 
 
-// defining function validate for each input,textarea and select Object
+// defining function validate for each input Object
   HTMLInputElement.prototype.validate = validation;
   HTMLTextAreaElement.prototype.validate = validation;
   HTMLSelectElement.prototype.validate = validation;
+//   for(let i=0; i<inputs.length; i++) {
+//     let err = [];
+//     inputs[i].prototype.validate = validation;
+//   }
 
+// //  setting the validate function to the prototype of textarea and select 
+//   for(let i=0; i<textareas.length; i++) {
+//     let err = [];
+//     textareas[i].prototype.validate = validation;
+//   }
 
 })();
 //console.log(err);
